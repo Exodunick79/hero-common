@@ -67,16 +67,16 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 PRODUCT_PACKAGES += \
-    gralloc.exynos5
-
-PRODUCT_PACKAGES += \
-    libion \
-    libfimg
+    hwcomposer.exynos5
 
 # Camera
 PRODUCT_PACKAGES += \
     camera.exynos5 \
     Snap
+
+# Packages
+PRODUCT_PACKAGES += \
+    SamsungDoze
 
 # hardware/samsung/AdvancedDisplay (MDNIE)
 PRODUCT_PACKAGES += \
@@ -138,7 +138,7 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     audio.primary.universal8890 \
-    libtinycompress
+    tinymix
 
 # Media
 PRODUCT_COPY_FILES += \
@@ -168,7 +168,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    power.universal8890
+    power.exynos5
 
 # Lights
 PRODUCT_PACKAGES += \
