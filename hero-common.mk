@@ -67,7 +67,11 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 
 PRODUCT_PACKAGES += \
-    hwcomposer.exynos5
+    gralloc.exynos5
+
+PRODUCT_PACKAGES += \
+    libion \
+    libfimg
 
 # Camera
 PRODUCT_PACKAGES += \
