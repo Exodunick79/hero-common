@@ -15,6 +15,7 @@ PRODUCT_PACKAGES += \
 # DRM
 PRODUCT_PACKAGES += \
 	android.hardware.drm@1.0-impl \
+	libExynosHWCService 
 #	libion
 #	gralloc.exynos5
 
@@ -30,12 +31,16 @@ PRODUCT_COPY_FILES += \
 # Properties
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.bq.gpu_to_cpu_unsupported=1 \
-	debug.hwc.force_gpu=1 \
 	ro.opengles.version=196609 \
 	ro.sf.lcd_density=560
 
 # Properties - HWC - not used on lineage/aosp
 PRODUCT_PROPERTY_OVERRIDES += \
-	debug.hwc.winupdate=1 \
-	debug.hwc.otf=1 \
-	debug.hwc.max_hw_overlays=0
+	debug.hwc.force_gpu=0 \
+	debug.hwc.max_hw_overlays=1 \
+	debug.egl.hw=1 \
+	debug.sf.enable_hwc_vds=1 \
+	debug.sf.hw=1 \
+	persist.sys.ui.hw=true \
+	debug.composition.type=gpu 
+
