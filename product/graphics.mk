@@ -37,4 +37,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Properties - HWC - not used on lineage/aosp
 PRODUCT_PROPERTY_OVERRIDES += \
 	debug.hwc.winupdate=1 \
-	debug.hwc.otf=1
+	debug.hwc.otf=1 \
+	debug.hwc.max_hw_overlays=0
