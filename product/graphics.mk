@@ -36,11 +36,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Properties - HWC - not used on lineage/aosp
 PRODUCT_PROPERTY_OVERRIDES += \
-	debug.hwc.force_gpu=0 \
-	debug.hwc.max_hw_overlays=1 \
+	debug.hwc.force_gpu=1 \
+	debug.hwc.max_hw_overlays=0 \
 	debug.egl.hw=1 \
 	debug.sf.enable_hwc_vds=1 \
-	debug.sf.hw=1 \
-	persist.sys.ui.hw=true \
-	debug.composition.type=gpu 
+	debug.sf.hw=0 
 
