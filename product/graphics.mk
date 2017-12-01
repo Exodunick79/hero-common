@@ -40,5 +40,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.hwc.max_hw_overlays=0 \
 	debug.egl.hw=1 \
 	debug.sf.enable_hwc_vds=1 \
-	debug.sf.hw=1 
+	debug.sf.hw=1 \
+	debug.slsi_platform=1 \
+	debug.hwc.winupdate=1 \
+	ro.hardware.egl=mali \
+	debug.hwui.use_buffer_age=false
 
