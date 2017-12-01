@@ -44,5 +44,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.slsi_platform=1 \
 	debug.hwc.winupdate=1 \
 	ro.hardware.egl=mali \
-	debug.hwui.use_buffer_age=false
+	debug.hwui.use_buffer_age=false \
+	persist.sys.ui.hw=true 
+
 
