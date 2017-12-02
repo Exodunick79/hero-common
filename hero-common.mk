@@ -68,28 +68,14 @@ PRODUCT_PACKAGES += \
 	android.hardware.power@1.0-impl
 
 ###########################################################
-### LIGHTS
-###########################################################
-
-PRODUCT_PACKAGES += \
-	lights.universal8890
-
-###########################################################
 ### CHARGER
 ###########################################################
 
 # Offmode charger
-# Use cm images if available, aosp ones otherwise
+# Use LineageOS images if available, aosp ones otherwise
 PRODUCT_PACKAGES += \
 	charger_res_images \
-	cm_charger_res_images
-
-###########################################################
-### MOBICORE
-###########################################################
-
-PRODUCT_PACKAGES += \
-	keystore.exynos5
+	lineage_charger_res_images
 
 ###########################################################
 ### PACKAGES
