@@ -10,6 +10,5 @@ PRODUCT_COPY_FILES += \
 
 
  PRODUCT_PROPERTY_OVERRIDES += \
-	persist.media.treble_omx=false \
-	media.sf.omx-plugin=libsomxcore.so 
+	persist.media.treble_omx=false 
 
