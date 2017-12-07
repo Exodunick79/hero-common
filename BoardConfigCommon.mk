@@ -56,7 +56,7 @@ BOARD_OVERRIDE_RS_CPU_VARIANT_64 := exynos-m1
 TARGET_USES_LEGACY_ADB_INTERFACE := true
 
 # SELinux
-BOARD_SEPOLICY_DIRS := device/samsung/hero-common/sepolicy
+#BOARD_SEPOLICY_DIRS := device/samsung/hero-common/sepolicy
 
 # SECComp filters
 BOARD_SECCOMP_POLICY += device/samsung/hero-common/seccomp
