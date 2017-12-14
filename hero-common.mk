@@ -93,6 +93,21 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	dtbhtoolExynos
 
+# For old blobs
+PRODUCT_PACKAGES += android.hidl.manager@1.0
+
+# Doze
+PRODUCT_PACKAGES += \
+    SamsungDoze
+
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
+
+# Pixel Experience
+PRODUCT_COPY_FILES += \
+  $(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
+
 # Inherit board specific products
 -include $(LOCAL_PATH)/product/*.mk
 
