@@ -13,40 +13,6 @@
 # GNU General Public License for more details.
 #
 
-# Dalvik/Art
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sys.fw.dex2oat_thread_count=4 \
-	dalvik.vm.heapstartsize=8m \
-	dalvik.vm.heapgrowthlimit=256m \
-	dalvik.vm.heapsize=512m \
-	dalvik.vm.heaptargetutilization=0.75 \
-	dalvik.vm.heapminfree=2m \
-	dalvik.vm.heapmaxfree=8m
-
-# Hwui
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.use_gpu_pixel_buffers=true \
-    ro.hwui.texture_cache_size=176 \
-    ro.hwui.layer_cache_size=106 \
-    ro.hwui.path_cache_size=64 \
-    ro.hwui.shape_cache_size=16 \
-    ro.hwui.gradient_cache_size=8 \
-    ro.hwui.drop_shadow_cache_size=24 \
-    ro.hwui.r_buffer_cache_size=24 \
-    ro.hwui.text_small_cache_width=4096 \
-    ro.hwui.text_small_cache_height=4096 \
-    ro.hwui.text_large_cache_width=8192 \
-    ro.hwui.text_large_cache_height=8192
-
-# Network
-# Define default initial receive window size in segments.
-PRODUCT_PROPERTY_OVERRIDES += \
-	net.tcp.default_init_rwnd=60
-
-# sdcardfs
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sys.sdcardfs=true
-
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
 	af.fast_track_multiplier=1 \
@@ -67,6 +33,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=196610 \
 	video.accelerate.hw=1
 
+# Dalvik/Art
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sys.fw.dex2oat_thread_count=4 \
+	dalvik.vm.heapstartsize=8m \
+	dalvik.vm.heapgrowthlimit=256m \
+	dalvik.vm.heapsize=512m \
+	dalvik.vm.heaptargetutilization=0.75 \
+	dalvik.vm.heapminfree=2m \
+	dalvik.vm.heapmaxfree=8m
+
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=640 \
@@ -77,10 +53,42 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.sf.hw=1 \
 	persist.sys.ui.hw=true
 
+# Hwui
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.use_gpu_pixel_buffers=true \
+    ro.hwui.texture_cache_size=176 \
+    ro.hwui.layer_cache_size=106 \
+    ro.hwui.path_cache_size=64 \
+    ro.hwui.shape_cache_size=16 \
+    ro.hwui.gradient_cache_size=8 \
+    ro.hwui.drop_shadow_cache_size=24 \
+    ro.hwui.r_buffer_cache_size=24 \
+    ro.hwui.text_small_cache_width=4096 \
+    ro.hwui.text_small_cache_height=4096 \
+    ro.hwui.text_large_cache_width=8192 \
+    ro.hwui.text_large_cache_height=8192
+
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.media.treble_omx=false
+
+# Network
+# Define default initial receive window size in segments.
+PRODUCT_PROPERTY_OVERRIDES += \
+	net.tcp.default_init_rwnd=60
+
 # NFC
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.nfc.sec_hal=true \
 	ro.nfc.port="I2C"
+
+# Performance += \
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.performance.tuning=1
+
+# Power-Management
+PRODUCT_PROPERTY_OVERRIDES += \
+	pm.sleep_mode=1
 
 # Radio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -96,18 +104,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	telephony.lteOnGsmDevice=1 \
 	telephony.lteOnCdmaDevice=0
 
-# WIFI
-PRODUCT_PROPERTY_OVERRIDES += \
-	wifi.interface=wlan0
-
-# Performance += \
-PRODUCT_PROPERTY_OVERRIDES += \
-	debug.performance.tuning=1
-
-# Power-Management
-PRODUCT_PROPERTY_OVERRIDES += \
-	pm.sleep_mode=1
-	
 # Surface
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.scrollingcache=1 \
@@ -115,3 +111,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.compcache.default=18 \
     ro.max.fling_velocity=12000 \
     ro.min.fling_velocity=8000
+
+# sdcardfs
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.sys.sdcardfs=false
+
+# UI
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.use_fifo_ui=1
+
+# WIFI
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0
