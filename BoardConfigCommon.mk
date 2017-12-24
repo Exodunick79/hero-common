@@ -54,7 +54,6 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aa
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-cortex_a53-linux-gnueabi-
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 # Image
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
@@ -72,6 +71,7 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 4508876800
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 27044851712
 BOARD_CACHEIMAGE_PARTITION_SIZE    := 209715200
 BOARD_FLASH_BLOCK_SIZE := 4096
+BOARD_KERNEL_IMAGE_NAME := Image
 
 # HDMI
 BOARD_HDMI_INCAPABLE := true
@@ -102,8 +102,8 @@ USE_OPENGL_RENDERER := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 
 # Hardware
-BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
-BOARD_HARDWARE_CLASS += device/samsung/hero-common/cmhw
+BOARD_HARDWARE_CLASS += device/samsung/hero-common/lineagehw
+BOARD_HARDWARE_CLASS += hardware/samsung/lineagehw
 
 # HWCServices
 BOARD_USES_HWC_SERVICES := true
@@ -119,6 +119,7 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_USE_SAMSUNG_CAMERAFORMAT_NV21 := true
 
 # Charger
+WITH_LINEAGE_CHARGER := false
 BOARD_CHARGING_MODE_BOOTING_LPM := /sys/class/power_supply/battery/batt_lp_charging
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
@@ -131,7 +132,7 @@ EXTENDED_FONT_FOOTPRINT := true
 BLOCK_BASED_OTA := true
 
 # Power Hal
-TARGET_POWERHAL_VARIANT := samsung
+# TARGET_POWERHAL_VARIANT := samsung
 
 # Properties
 TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
@@ -151,7 +152,7 @@ BOARD_NFC_HAL_SUFFIX := universal8890
 
 # RIL
 BOARD_MODEM_TYPE := ss333
-BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
+BOARD_PROVIDES_LIBRIL := true
 
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -188,6 +189,7 @@ TARGET_USES_64_BIT_BCMDHD        := true
 BOARD_HAVE_SAMSUNG_WIFI          := true
 BOARD_WLAN_DEVICE                := bcmdhd
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
+WPA_SUPPLICANT_USE_HIDL          := true
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER             := NL80211
@@ -199,6 +201,9 @@ WIFI_BAND                        := 802_11_ABG
 
 # Lockscreen charging info: real time values
 BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
+# Usb
+TARGET_USES_LEGACY_ADB_INTERFACE := true
 
 # SELinux
 BOARD_SEPOLICY_DIRS := device/samsung/hero-common/sepolicy

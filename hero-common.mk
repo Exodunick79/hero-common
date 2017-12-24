@@ -41,7 +41,7 @@ TARGET_SCREEN_WIDTH := 1440
 
 # Power
 PRODUCT_PACKAGES += \
-	power.universal8890
+	power.exynos5
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -72,7 +72,8 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(DEVICE_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml
+	$(DEVICE_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+	$(DEVICE_PATH)/configs/audio/mixer_gains.xml:system/etc/mixer_gains.xml
 
 PRODUCT_PACKAGES += \
 	audio.a2dp.default \
@@ -83,7 +84,8 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-	init.bluetooth.rc
+	init.bluetooth.rc \
+    	libbt-vendor
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -129,11 +131,11 @@ PRODUCT_COPY_FILES += \
 # Camera
 PRODUCT_PACKAGES += \
 	camera.exynos5 \
+	libcamhelpr \
 	Snap
 
 # Fingerprint
 PRODUCT_PACKAGES += \
-	fingerprintd \
 	fingerprint.exynos5
 
 # GPS
@@ -142,13 +144,52 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/gps/gps.xml:system/etc/gps.xml
 
 PRODUCT_PACKAGES += \
+    	libsensoreventq \
 	init.gps.rc
 
 # Graphics
 PRODUCT_PACKAGES += \
 	libfimg \
 	libion \
-	hwcomposer.exynos5
+	hwcomposer.exynos5 \
+    	libhwc2on1adapter
+
+# HIDL
+PRODUCT_PACKAGES += \
+	android.hardware.audio@2.0-impl \
+	android.hardware.audio.effect@2.0-impl \
+	android.hardware.bluetooth@1.0-impl \
+	camera.device@3.2-impl \
+	camera.device@1.0-impl \
+	android.hardware.camera.provider@2.4-impl \
+	android.hardware.biometrics.fingerprint@2.1-service \
+	android.hardware.graphics.allocator@2.0-impl \
+	android.hardware.graphics.allocator@2.0-service \
+	android.hardware.graphics.composer@2.1-impl \
+    android.hardware.graphics.composer@2.1-service \
+	android.hardware.graphics.mapper@2.0-impl \
+    android.hardware.configstore@1.0-service \
+	android.hardware.keymaster@3.0-impl \
+	android.hardware.keymaster@3.0-service \
+	android.hardware.light@2.0-impl \
+    android.hardware.light@2.0-service \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
+	android.hardware.memtrack@1.0-impl \
+    android.hardware.memtrack@1.0-service \
+    android.system.net.netd@1.0 \
+	android.hardware.nfc@1.0-impl \
+	android.hardware.power@1.0-impl \
+	android.hardware.radio@1.0 \
+	android.hardware.radio.deprecated@1.0 \
+	android.hardware.sensors@1.0-impl \
+    android.hardware.sensors@1.0-service \
+	android.hardware.vibrator@1.0-impl \
+    android.hardware.vibrator@1.0-service \
+    android.hardware.wifi@1.0-supplicant \
+	android.hardware.wifi@1.0-service \
+	android.hardware.wifi@1.0 \
+	android.hardware.wifi@1.0-impl
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -165,11 +206,19 @@ PRODUCT_PACKAGES += \
 	ethertypes \
 	libebtc
 
+# Manifest
+PRODUCT_COPY_FILES += \
+    	$(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
+
 # Media
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
 	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
 
+# Network
+PRODUCT_PACKAGES += \
+    libandroid_net \
+	netutils-wrapper-1.0
 
 # NFC
 PRODUCT_COPY_FILES += \
@@ -182,6 +231,14 @@ PRODUCT_PACKAGES += \
 	NfcNci \
 	Tag
 
+# Pixel Experience
+PRODUCT_COPY_FILES += \
+  	$(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
+
+# Shims
+PRODUCT_PACKAGES += \
+	libprocname
+
 # Radio
 PRODUCT_PACKAGES += \
 	init.baseband.rc \
@@ -192,7 +249,14 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libxml2 \
 	libprotobuf-cpp-full \
-	libsecril-client
+	libsecril-client \
+	android.hardware.radio@1.0 \
+	android.hardware.radio.deprecated@1.0 \
+	modemloader \
+	rild \
+	libreference-ril \
+	libsecril-client-sap \
+	libril 
 
 # USB
 PRODUCT_PACKAGES += \
@@ -204,7 +268,8 @@ PRODUCT_PACKAGES += \
 # WIFI
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+	$(LOCAL_PATH)/configs/wifi/filter_ie:system/etc/wifi/filter_ie
 
 PRODUCT_PACKAGES += \
 	init.wifi.rc
@@ -213,9 +278,12 @@ PRODUCT_PACKAGES += \
 	macloader \
 	wifiloader \
 	hostapd \
+	wificond \
+	wifilogd \
+	wlutil \
 	libwpa_client \
 	wpa_supplicant \
-	wpa_supplicant.conf
+	wpa_supplicant.conf \
 
 # System properties
 -include $(DEVICE_PATH)/system_prop.mk
