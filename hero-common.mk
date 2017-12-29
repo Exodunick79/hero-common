@@ -98,7 +98,8 @@ PRODUCT_PACKAGES += android.hidl.manager@1.0
 
 # Doze
 PRODUCT_PACKAGES += \
-    SamsungDoze
+    SamsungDoze \
+    SamsungParts
 
 # UI
 PRODUCT_PROPERTY_OVERRIDES += \
