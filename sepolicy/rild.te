@@ -39,3 +39,6 @@ allow rild self:capability chown;
 
 allow rild audioserver:dir search;
 allow rild audioserver:file { read open getattr };
+
+allow rild init:dir search;
+allow rild init:file { open read };

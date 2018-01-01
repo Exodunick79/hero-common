@@ -26,3 +26,5 @@ allow system_server batch_io_device:chr_file { open read write ioctl };
 allow system_server app_efs_file:dir search;
 
 allow system_server debugfs:dir { read open };
+
+allow system_server ion_device:chr_file write;

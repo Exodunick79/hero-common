@@ -1,0 +1,2 @@
+allow shell modemloader_prop:file { getattr open };
+allow shell wifi_prop:file { getattr open };
