@@ -8,6 +8,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
 	camera.exynos5 \
+    Snap \
 	libcamhelpr \
 	camera.device@3.2-impl \
 	camera.device@1.0-impl \
