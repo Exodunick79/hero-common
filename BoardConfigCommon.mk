@@ -108,6 +108,9 @@ BOARD_HARDWARE_CLASS += device/samsung/hero-common/cmhw
 # HWCServices
 BOARD_USES_HWC_SERVICES := true
 
+# Audio
+TARGET_AUDIOHAL_VARIANT := samsung
+
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
@@ -131,7 +134,7 @@ EXTENDED_FONT_FOOTPRINT := true
 BLOCK_BASED_OTA := true
 
 # Power Hal
-TARGET_POWERHAL_VARIANT := samsung
+# TARGET_POWERHAL_VARIANT := samsung
 
 # Properties
 TARGET_SYSTEM_PROP := device/samsung/hero-common/system.prop
@@ -150,6 +153,7 @@ BACKLIGHT_PATH := "/sys/class/backlight/panel/brightness"
 BOARD_NFC_HAL_SUFFIX := universal8890
 
 # RIL
+BOARD_PROVIDES_LIBRIL := true
 BOARD_MODEM_TYPE := ss333
 BOARD_RIL_CLASS := ../../../$(LOCAL_PATH)/ril
 
