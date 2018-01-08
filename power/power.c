@@ -501,11 +501,6 @@ static void samsung_power_hint(struct power_module *module,
             ALOGV("%s: POWER_HINT_LAUNCH", __func__);
             send_boostpulse(samsung_pwr->boostpulse_fd);
             break;
-        case POWER_HINT_CPU_BOOST:
-            ALOGV("%s: POWER_HINT_CPU_BOOST", __func__);
-            int32_t duration_us = *((int32_t *)data);
-            send_boost(samsung_pwr->boost_fd, duration_us);
-            break;
         case POWER_HINT_DISABLE_TOUCH:
             ALOGV("%s: POWER_HINT_DISABLE_TOUCH", __func__);
             sysfs_write(samsung_pwr->touchscreen_power_path, data ? "0" : "1");

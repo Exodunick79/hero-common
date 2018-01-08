@@ -69,7 +69,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Graphics
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.sf.lcd_density=640 \
+	ro.sf.lcd_density=560 \
 	debug.hwc.force_gpu=0 \
 	debug.hwc.max_hw_overlays=0 \
 	debug.egl.hw=1 \
