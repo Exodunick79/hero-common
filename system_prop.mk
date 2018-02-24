@@ -14,6 +14,16 @@
 # GNU General Public License for more details.
 #
 
+# Audio
+PRODUCT_PROPERTY_OVERRIDES += \
+	af.fast_track_multiplier=1 \
+	audio_hal.force_voice_config=wide
+
+# Bluetooth
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.bt.bdaddr_path="/efs/bluetooth/bt_addr" \
+	qcom.bluetooth.soc=rome
+
 # Dalvik/Art
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sys.fw.dex2oat_thread_count=4 \
@@ -23,6 +33,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heaptargetutilization=0.75 \
 	dalvik.vm.heapminfree=2m \
 	dalvik.vm.heapmaxfree=8m
+
+# Graphics
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.bq.gpu_to_cpu_unsupported=1 \
+	ro.opengles.version=196609 \
+	ro.sf.lcd_density=560 \
+	debug.hwc.force_gpu=1 \
+	debug.hwui.use_buffer_age=false
+
+# HWC - not used on lineage/aosp
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.hwc.winupdate=1 \
+	debug.hwc.otf=1
 
 # Hwui
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -40,11 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.hwui.text_large_cache_height=2048 \
 	ro.hwui.fbo_cache_size=16
 
-# Network
-# Define default initial receive window size in segments.
-PRODUCT_PROPERTY_OVERRIDES += \
-	net.tcp.default_init_rwnd=60
-
 # misc
 PRODUCT_PROPERTY_OVERRIDES += \
 	media.stagefright.legacyencoder=1 \
@@ -53,6 +71,33 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.telephony.mms_data_profile=5 \
 	persist.media.treble_omx=false
 
+# Network - Define default initial receive window size in segments.
+PRODUCT_PROPERTY_OVERRIDES += \
+	net.tcp.default_init_rwnd=60
+
+# NFC
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.nfc.sec_hal=true \
+	ro.nfc.port="I2C"
+
+# Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.radio.add_power_save=1 \
+	persist.radio.apm_sim_not_pwdn=1 \
+	rild.libpath=/system/lib64/libsec-ril.so \
+	rild.libpath2=/system/lib64/libsec-ril-dsds.so \
+	ro.telephony.default_network=9 \
+	ro.ril.gprsclass=10 \
+	ro.ril.hsxpa=1 \
+	persist.data.netmgrd.qos.enable=false \
+	ro.use_data_netmgrd=false \
+	ro.ril.telephony.mqanelements=6 \
+	telephony.lteOnGsmDevice=1 \
+	telephony.lteOnCdmaDevice=0 \
+	ro.telephony.get_imsi_from_sim=true \
+	ro.ril.force_eri_from_xml=true \
+	net.tethering.noprovisioning=true
+
 # sdcardfs
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sys.sdcardfs=false
@@ -60,3 +105,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # USB
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.adb.secure=0
+
+# WiFi
+PRODUCT_PROPERTY_OVERRIDES += \
+	wifi.interface=wlan0

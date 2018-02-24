@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The Haxynox Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-# Keymaster
-PRODUCT_PACKAGES += \
- 	keystore.exynos5 \
-	android.hardware.keymaster@3.0-impl \
-	android.hardware.keymaster@3.0-service
+LOCAL_PATH := $(call my-dir)
+
+include $(call all-makefiles-under,$(LOCAL_PATH))

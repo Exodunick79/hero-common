@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2017 The Haxynox Project
+# Copyright (C) 2018 TeamNexus
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,7 +14,15 @@
 # limitations under the License.
 #
 
-# Lights
-PRODUCT_PACKAGES += \
-	lights.universal8890 \
-	android.hardware.light@2.0-impl
+#
+# $(space) + join-with taken from https://stackoverflow.com/a/9551487
+#
+
+# A literal space.
+space :=
+space +=
+
+# Joins elements of the list in arg 2 with the given separator.
+#   1. Element separator.
+#   2. The list.
+join-with = $(subst $(space),$1,$(strip $2))

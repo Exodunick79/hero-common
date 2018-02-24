@@ -653,7 +653,6 @@ on property:sys.boot_completed=1
 
 # icd
 on property:init.svc.media=restarting
-#~ check_icd
     start icd
 
 # Sensorhub service
