@@ -21,8 +21,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.bt.bdaddr_path="/efs/bluetooth/bt_addr" \
-	qcom.bluetooth.soc=rome
+	ro.bt.bdaddr_path="/efs/bluetooth/bt_addr"
+
+# Boot directly from charger mode
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.enable_boot_charger_mode=1
 
 # Dalvik/Art
 PRODUCT_PROPERTY_OVERRIDES += \
