@@ -2,9 +2,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := \
-    CameraWrapper.cpp \
-    Camera2Wrapper.cpp \
-    Camera3Wrapper.cpp
+    CameraWrapper.cpp
 
 LOCAL_STATIC_LIBRARIES := libbase libarect
 LOCAL_SHARED_LIBRARIES := \
@@ -20,7 +18,6 @@ LOCAL_C_INCLUDES += \
     frameworks/native/libs/nativewindow/include
 
 LOCAL_MODULE_RELATIVE_PATH := hw
-
 LOCAL_MODULE := camera.$(TARGET_BOARD_PLATFORM)
 LOCAL_MODULE_TAGS := optional
 

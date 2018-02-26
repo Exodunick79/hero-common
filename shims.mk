@@ -44,6 +44,6 @@ TARGET_LD_SHIM_LIBS += \
     /system/lib64/omx/libOMX.Exynos.VP9.Decoder.so|/system/lib64/libstagefright_shim.so \
     /system/lib/omx/libOMX.Exynos.WMV.Decoder.so|/system/lib/libstagefright_shim.so \
     /system/lib64/omx/libOMX.Exynos.WMV.Decoder.so|/system/lib64/libstagefright_shim.so \
-    /system/lib/libcamera_client.so|libcamera_client_shim.so \
-    /system/lib64/libstagefright.so|/system/lib64/libstagefright_shim.so \
-    /system/lib/libstagefright.so|/system/lib/libstagefright_shim.so
+    /system/lib/libcamera_client.so|libcamera_client_shim.so
+#    /system/lib64/libstagefright.so|/system/lib64/libstagefright_shim.so \
+#    /system/lib/libstagefright.so|/system/lib/libstagefright_shim.so
