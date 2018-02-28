@@ -141,14 +141,9 @@ PRODUCT_PACKAGES += \
 	android.hardware.biometrics.fingerprint@2.1-service
 
 # GPS
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-	$(DEVICE_PATH)/configs/gps/gps.xml:system/etc/gps.xml
-
 PRODUCT_PACKAGES += \
 	libsensoreventq \
-	android.hardware.gnss@1.0-impl \
-	android.hardware.gnss@1.0-service
+	android.hardware.gnss@1.0-impl
 
 # Graphics
 PRODUCT_PACKAGES += \
@@ -162,6 +157,12 @@ PRODUCT_PACKAGES += \
 	android.hardware.renderscript@1.0-impl \
 	android.hardware.drm@1.0-impl \
 	libprocname
+
+# HIDL
+PRODUCT_PACKAGES += \
+	android.hidl.base@1.0 \
+	android.hidl.manager@1.0 \
+	android.hidl.manager@1.0-java
 
 # Input
 PRODUCT_COPY_FILES += \
@@ -233,18 +234,12 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	libxml2 \
 	libprotobuf-cpp-full \
-	libsecril-client \
-	android.hardware.radio@1.0 \
-	android.hardware.radio.deprecated@1.0 \
-	modemloader \
-	rild \
-	libreference-ril \
-	libsecril-client-sap \
-	libril
+	libsecril-client
 
 # Sensorhub
 PRODUCT_PACKAGES += \
 	android.hardware.sensors@1.0-impl \
+	android.hardware.sensors@1.0-service \
 	android.hardware.vibrator@1.0-impl \
 	android.hardware.vibrator@1.0-service
 

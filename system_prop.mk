@@ -90,16 +90,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib64/libsec-ril.so \
 	rild.libpath2=/system/lib64/libsec-ril-dsds.so \
 	ro.telephony.default_network=9 \
+	ro.telephony.ril_class=SlteRIL \
 	ro.ril.gprsclass=10 \
 	ro.ril.hsxpa=1 \
-	persist.data.netmgrd.qos.enable=false \
-	ro.use_data_netmgrd=false \
+	vendor.sec.rild.libpath=/vendor/lib64/libsec-ril.so \
+	vendor.sec.rild.libpath2=/vendor/lib64/libsec-ril-dsds.so \
+	ro.debug_level=0x494d \
 	ro.ril.telephony.mqanelements=6 \
 	telephony.lteOnGsmDevice=1 \
-	telephony.lteOnCdmaDevice=0 \
-	ro.telephony.get_imsi_from_sim=true \
-	ro.ril.force_eri_from_xml=true \
-	net.tethering.noprovisioning=true
+	telephony.lteOnCdmaDevice=0
 
 # sdcardfs
 PRODUCT_PROPERTY_OVERRIDES += \
