@@ -214,6 +214,8 @@
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
+    <bool name="config_powerDecoupleInteractiveModeFromDisplay">true</bool>
+
     <!-- Boolean to enable stk functionality on Samsung phones -->
     <!--bool name="config_samsung_stk">true</bool-->
     
@@ -268,18 +270,12 @@
          that can be set by the user. -->
     <integer name="config_screenBrightnessDoze">30</integer>
 
-    <!-- Default list of files pinned by the Pinner Service -->
-    <string-array translatable="false" name="config_defaultPinnerServiceFiles">
-        <item>"/system/framework/arm64/boot-framework.oat"</item>
-        <item>"/system/framework/arm64/boot-framework.vdex"</item>
-        <item>"/system/framework/oat/arm64/services.odex"</item>
-        <item>"/system/framework/oat/arm64/services.vdex"</item>
-        <item>"/system/framework/arm64/boot.oat"</item>
-        <item>"/system/framework/arm64/boot.vdex"</item>
-   </string-array>
-
    <!-- Control whether the always on display mode is available. This should only be enabled on
         devices where the display has be tuned to be power efficient in DOZE and/or DOZE_SUSPEND
         states. -->
-   <bool name="config_dozeAlwaysOnDisplayAvailable">false</bool>
+   <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- If true, the doze component is not started until after the screen has been
+         turned off and the screen off animation has been performed. -->
+<bool name="config_dozeAfterScreenOff">true</bool> 
 </resources>

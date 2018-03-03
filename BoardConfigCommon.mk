@@ -50,10 +50,13 @@ TARGET_2ND_CPU_VARIANT := cortex-a53.a57
 # Kernel
 TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_HEADER_ARCH := arm64
-KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-7.0/bin
-TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-cortex_a53-linux-gnueabi-
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
+
+
+# Kernel Toolchain
+KERNEL_TOOLCHAIN_PREFIX := aarch64-linux-gnu-
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-linaro/bin
 
 # Image
 BOARD_CUSTOM_BOOTIMG_MK := hardware/samsung/mkbootimg.mk
@@ -183,6 +186,9 @@ endif
 # Sensors
 TARGET_NO_SENSOR_PERMISSION_CHECK := true
 TARGET_SEC_FP_HAL_VARIANT := bauth
+
+# Usb
+TARGET_USES_LEGACY_ADB_INTERFACE := true
 
 # Wifi
 TARGET_USES_64_BIT_BCMDHD        := true

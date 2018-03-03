@@ -233,8 +233,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
   $(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
 
+# HIDL
+PRODUCT_PACKAGES += \
+	android.hidl.base@1.0 \
+	android.hidl.manager@1.0 \
+	android.hidl.manager@1.0-java
+
 # Shims
 PRODUCT_PACKAGES += \
+	libstagefright_shim \
 	libprocname
 
 # Radio
@@ -255,6 +262,11 @@ PRODUCT_PACKAGES += \
 	libreference-ril \
 	libsecril-client-sap \
 	libril 
+
+# Shim
+TARGET_LD_SHIM_LIBS += \
+	/system/lib/libexynoscamera.so|/system/vendor/lib/libcamhelpr.so \
+	/system/lib/libstagefright.so|/system/lib/libstagefright_shim.so
 
 # USB
 PRODUCT_PACKAGES += \
