@@ -17,46 +17,154 @@
 DEVICE_PACKAGE_OVERLAYS += device/samsung/hero-common/overlay
 DEVICE_PATH := device/samsung/hero-common
 
-# Ramdisk
-PRODUCT_PACKAGES += \
-	fstab.samsungexynos8890 \
-	init.samsung.rc \
-	init.samsungexynos8890.rc \
-	ueventd.samsungexynos8890.rc \
-	init.spectrum.rc
-
-# Graphics
-# This device is xhdpi.  However the platform doesn't
-# currently contain all of the bitmaps at xhdpi density so
-# we do this little trick to fall back to the hdpi version
-# if the xhdpi doesn't exist.
+# AAPT
 PRODUCT_AAPT_CONFIG := xlarge
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
-# A list of dpis to select prebuilt apk, in precedence order.
 PRODUCT_AAPT_PREBUILT_DPI := xxxhdpi xxhdpi xhdpi hdpi
+
+# Audio
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
+	$(DEVICE_PATH)/configs/audio/mixer_paths_0.xml:system/etc/mixer_paths_0.xml
+
+PRODUCT_PACKAGES += \
+	audio.a2dp.default \
+	audio.usb.default \
+	audio.r_submix.default \
+	audio.primary.universal8890 \
+
+# Bluetooth
+PRODUCT_PACKAGES += \
+	init.bluetooth.rc \
+    	libbt-vendor
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560
 TARGET_SCREEN_WIDTH := 1440
 
-# Power
+# Camera
 PRODUCT_PACKAGES += \
-	power.exynos5
+	camera.exynos5 \
+	Snap \
+	libcamhelpr
+
+# Charger
+PRODUCT_PACKAGES += \
+	charger_res_images \
+	lineage_charger_res_images
+
+# DTB Tool
+PRODUCT_PACKAGES += \
+	dtbhtoolExynos
+
+# Fingerprint
+PRODUCT_PACKAGES += \
+	fingerprint.exynos5
+
+# GPS
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml \
+    $(LOCAL_PATH)/configs/gps/gnss.conf:system/etc/gnss.conf \
+    $(LOCAL_PATH)/configs/gps/gpsconfig.xml:system/etc/gpsconfig.xml \
+    $(LOCAL_PATH)/configs/gps/gps.xml:system/etc/gps.xml \
+    $(LOCAL_PATH)/configs/gps/inv_ipld.prop:system/etc/inv_ipld.prop \
+    $(LOCAL_PATH)/configs/gps/init.connectivity.gps.rc:system/etc/init/init.connectivity.gps.rc
+
+# Graphics
+PRODUCT_PACKAGES += \
+	libfimg \
+	libion \
+	hwcomposer.exynos5 \
+	libhwc2on1adapter
+
+# HIDL
+PRODUCT_PACKAGES += \
+	android.hardware.audio@2.0-impl \
+	android.hardware.audio.effect@2.0-impl \
+	android.hidl.base@1.0 \
+	android.hardware.bluetooth@1.0-impl \
+	camera.device@3.2-impl \
+	camera.device@1.0-impl \
+	android.hardware.camera.provider@2.4-impl \
+	android.hardware.camera.provider@2.4-service \
+	android.hardware.biometrics.fingerprint@2.1-service \
+	android.hardware.gnss@1.0-impl \
+	android.hardware.gnss@1.0-service \
+	android.hardware.graphics.allocator@2.0-impl \
+	android.hardware.graphics.allocator@2.0-service \
+	android.hardware.graphics.composer@2.1-impl \
+	android.hardware.graphics.composer@2.1-service \
+	android.hardware.graphics.mapper@2.0-impl \
+	android.hardware.configstore@1.0-service \
+	android.hardware.keymaster@3.0-impl \
+	android.hardware.keymaster@3.0-service \
+	android.hardware.light@2.0-impl \
+	android.hardware.light@2.0-service \
+	android.hidl.base@1.0 \
+	android.hidl.manager@1.0 \
+	android.hidl.manager@1.0-java \
+	android.hardware.memtrack@1.0-impl \
+	android.hardware.memtrack@1.0-service \
+	android.hardware.nfc@1.0-impl \
+	android.hardware.power@1.0-impl \
+	android.hardware.radio@1.0 \
+	android.hardware.radio.deprecated@1.0 \
+	android.hardware.sensors@1.0-impl \
+	android.hardware.sensors@1.0-service \
+	android.hardware.vibrator@1.0-impl \
+	android.hardware.vibrator@1.0-service \
+	android.hardware.wifi@1.0-supplicant \
+	android.hardware.wifi@1.0-service \
+	android.hardware.wifi@1.0 \
+	android.hardware.wifi@1.0-impl
+
+# Input
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+	$(DEVICE_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
+	$(DEVICE_PATH)/configs/idc/ft5x06_ts.idc:system/usr/idc/ft5x06_ts.idc \
+	$(DEVICE_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
+	$(DEVICE_PATH)/configs/idc/Synaptics_RMI4_TouchPad_Sensor.idc:system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc \
+	$(DEVICE_PATH)/configs/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
+
+# IPv6
+PRODUCT_PACKAGES += \
+	ebtables \
+	ethertypes \
+	libebtc
 
 # Lights
 PRODUCT_PACKAGES += \
 	lights.universal8890
 
-# Charger
-# Offmode charger
-# Use cm images if available, aosp ones otherwise
-PRODUCT_PACKAGES += \
-	charger_res_images \
-	cm_charger_res_images
+# Manifest
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/manifest.xml:system/vendor/manifest.xml
+
+# Media
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
+	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
 
 # Mobicore
 PRODUCT_PACKAGES += \
 	keystore.exynos5
+
+# Network
+PRODUCT_PACKAGES += \
+	netutils-wrapper-1.0
+
+# NFC
+PRODUCT_COPY_FILES += \
+	$(DEVICE_PATH)/configs/nfc/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
+	$(DEVICE_PATH)/configs/nfc/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
+	$(DEVICE_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
+
+PRODUCT_PACKAGES += \
+	com.android.nfc_extras \
+	NfcNci \
+	Tag
 
 # Packages
 PRODUCT_PACKAGES += \
@@ -64,28 +172,6 @@ PRODUCT_PACKAGES += \
 	SamsungServiceMode \
 	Torch \
 	SamsungDoze
-
-# DTB Tool
-PRODUCT_PACKAGES += \
-	dtbhtoolExynos
-
-# Audio
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	$(DEVICE_PATH)/configs/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
-	$(DEVICE_PATH)/configs/audio/mixer_gains.xml:system/etc/mixer_gains.xml
-
-PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-	audio.usb.default \
-	audio.r_submix.default \
-	audio.primary.universal8890 \
-	libtinycompress
-
-# Bluetooth
-PRODUCT_PACKAGES += \
-	init.bluetooth.rc \
-    libbt-vendor
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -128,121 +214,13 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
-# Camera
-PRODUCT_PACKAGES += \
-	camera.exynos5 \
-	libcamhelpr \
-	Snap
-
-# Fingerprint
-PRODUCT_PACKAGES += \
-	fingerprint.exynos5
-
-# GPS
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/gps/gps.conf:system/etc/gps.conf \
-	$(DEVICE_PATH)/configs/gps/gps.xml:system/etc/gps.xml
-
-PRODUCT_PACKAGES += \
-    libsensoreventq \
-	init.gps.rc
-
-# Graphics
-PRODUCT_PACKAGES += \
-	libfimg \
-	libion \
-	hwcomposer.exynos5 \
-    libhwc2on1adapter
-
-# HIDL
-PRODUCT_PACKAGES += \
-	android.hardware.audio@2.0-impl \
-	android.hardware.audio.effect@2.0-impl \
-	android.hardware.bluetooth@1.0-impl \
-	camera.device@3.2-impl \
-	camera.device@1.0-impl \
-	android.hardware.camera.provider@2.4-impl \
-	android.hardware.biometrics.fingerprint@2.1-service \
-	android.hardware.graphics.allocator@2.0-impl \
-	android.hardware.graphics.allocator@2.0-service \
-	android.hardware.graphics.composer@2.1-impl \
-    android.hardware.graphics.composer@2.1-service \
-	android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.configstore@1.0-service \
-	android.hardware.keymaster@3.0-impl \
-	android.hardware.keymaster@3.0-service \
-	android.hardware.light@2.0-impl \
-    android.hardware.light@2.0-service \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0 \
-	android.hardware.memtrack@1.0-impl \
-    android.hardware.memtrack@1.0-service \
-	android.hardware.nfc@1.0-impl \
-	android.hardware.power@1.0-impl \
-	android.hardware.radio@1.0 \
-	android.hardware.radio.deprecated@1.0 \
-	android.hardware.sensors@1.0-impl \
-    android.hardware.sensors@1.0-service \
-	android.hardware.vibrator@1.0-impl \
-    android.hardware.vibrator@1.0-service \
-    android.hardware.wifi@1.0-supplicant \
-	android.hardware.wifi@1.0-service \
-	android.hardware.wifi@1.0 \
-	android.hardware.wifi@1.0-impl
-
-# Input
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
-	$(DEVICE_PATH)/configs/keylayout/sec_touchkey.kl:system/usr/keylayout/sec_touchkey.kl \
-	$(DEVICE_PATH)/configs/idc/ft5x06_ts.idc:system/usr/idc/ft5x06_ts.idc \
-	$(DEVICE_PATH)/configs/idc/Synaptics_HID_TouchPad.idc:system/usr/idc/Synaptics_HID_TouchPad.idc \
-	$(DEVICE_PATH)/configs/idc/Synaptics_RMI4_TouchPad_Sensor.idc:system/usr/idc/Synaptics_RMI4_TouchPad_Sensor.idc \
-	$(DEVICE_PATH)/configs/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
-
-# IPv6
-PRODUCT_PACKAGES += \
-	ebtables \
-	ethertypes \
-	libebtc
-
-# Manifest
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/manifest.xml:system/vendor/manifest.xml
-
-# Media
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
-	$(DEVICE_PATH)/configs/media/media_profiles.xml:system/etc/media_profiles.xml
-
-# Network
-PRODUCT_PACKAGES += \
-	netutils-wrapper-1.0
-
-# NFC
-PRODUCT_COPY_FILES += \
-	$(DEVICE_PATH)/configs/nfc/libnfc-sec-hal.conf:system/etc/libnfc-sec-hal.conf \
-	$(DEVICE_PATH)/configs/nfc/libnfc-sec.conf:system/etc/libnfc-brcm.conf \
-	$(DEVICE_PATH)/configs/nfc/nfcee_access.xml:system/etc/nfcee_access.xml
-
-PRODUCT_PACKAGES += \
-	com.android.nfc_extras \
-	NfcNci \
-	Tag
-
 # Pixel Experience
 PRODUCT_COPY_FILES += \
-  $(LOCAL_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
+	$(DEVICE_PATH)/configs/nexus.xml:system/etc/sysconfig/nexus.xml
 
-# HIDL
+# Power
 PRODUCT_PACKAGES += \
-	android.hidl.base@1.0 \
-	android.hidl.manager@1.0 \
-	android.hidl.manager@1.0-java
-
-# Shims
-PRODUCT_PACKAGES += \
-	libstagefright_shim \
-	libprocname
+	power.exynos5
 
 # Radio
 PRODUCT_PACKAGES += \
@@ -263,10 +241,24 @@ PRODUCT_PACKAGES += \
 	libsecril-client-sap \
 	libril 
 
-# Shim
+# Ramdisk
+PRODUCT_PACKAGES += \
+	fstab.samsungexynos8890 \
+	init.samsung.rc \
+	init.samsungexynos8890.rc \
+	ueventd.samsungexynos8890.rc \
+	init.spectrum.rc
+
+# Shims
+PRODUCT_PACKAGES += \
+	libstagefright_shim \
+	libprocname
+
 TARGET_LD_SHIM_LIBS += \
 	/system/lib/libexynoscamera.so|/system/vendor/lib/libcamhelpr.so \
-	/system/lib/libstagefright.so|/system/lib/libstagefright_shim.so
+
+PRODUCT_COPY_FILES += \
+    $(DEVICE_PATH)/configs/init/mediaserver.rc:system/etc/init/mediaserver.rc 
 
 # USB
 PRODUCT_PACKAGES += \
@@ -279,7 +271,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
 	$(DEVICE_PATH)/configs/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
 	$(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-	$(LOCAL_PATH)/configs/wifi/filter_ie:system/etc/wifi/filter_ie
+	$(DEVICE_PATH)/configs/wifi/filter_ie:system/etc/wifi/filter_ie
 
 PRODUCT_PACKAGES += \
 	init.wifi.rc

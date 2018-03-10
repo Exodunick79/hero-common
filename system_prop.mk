@@ -18,13 +18,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	af.fast_track_multiplier=1 \
 	audio_hal.force_voice_config=wide
 
-# Bluetooth workaround:
-# The new CAF code defaults to MCT HAL, but we
-# need the old H4 HAL for our Broadcom WiFi.
+# Bluetooth
 PRODUCT_PROPERTY_OVERRIDES += \
-	qcom.bluetooth.soc=rome
-
-PRODUCT_PROPERTY_OVERRIDES += \
+	qcom.bluetooth.soc=rome \
 	ro.bt.bdaddr_path="/efs/bluetooth/bt_addr"
 
 # Dalvik/Art
@@ -71,7 +67,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.media.treble_omx=false
 
 # Network
-# Define default initial receive window size in segments.
 PRODUCT_PROPERTY_OVERRIDES += \
 	net.tcp.default_init_rwnd=60
 
