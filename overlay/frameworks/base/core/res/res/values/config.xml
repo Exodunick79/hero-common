@@ -213,6 +213,15 @@ Add a comment to this line
     <!-- Permit doze mode to operate -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
+    <!-- Whether the always on display mode is available. -->
+    <bool name="config_dozeAlwaysOnDisplayAvailable">true</bool>
+
+    <!-- Whether the display blanks itself when transition from a doze to a non-doze state -->
+    <bool name="config_displayBlanksAfterDoze">true</bool>
+
+    <!-- Allow automatic adjusting of the screen brightness while dozing in low power state. -->
+    <bool name="config_allowAutoBrightnessWhileDozing">true</bool>
+
     <!-- Allow screen mirroring/miracast -->
     <bool name="config_enableWifiDisplay">true</bool>
     <!-- Our gralloc has support for protected buffers -->
@@ -269,9 +278,5 @@ Add a comment to this line
         <item>SUPL_HOST=supl.google.com</item>
         <item>SUPL_PORT=7275</item>
     </string-array>
-
-    <!-- If enabled, capacitive keys will only light up when pressed.
-         Otherwise, the buttons will light up whenever the user interacts with the device -->
-    <bool name="config_buttonLightOnKeypressOnly">true</bool>
 
 </resources>
