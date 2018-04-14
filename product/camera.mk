@@ -13,4 +13,6 @@ PRODUCT_PACKAGES += \
 	camera.device@1.0-impl \
 	android.hardware.camera.provider@2.4-impl \
 	android.hardware.camera.provider@2.4-service \
+    libexynoscamera_shim \
+    libcamera_client_shim \
 	Snap

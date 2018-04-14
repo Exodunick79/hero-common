@@ -35,7 +35,7 @@ TARGET_AUDIOHAL_VARIANT := samsung
 TARGET_USES_64_BIT_BINDER := true
 
 # Use SDFat for exfat driver
-TARGET_EXFAT_DRIVER := sdfat
+#TARGET_EXFAT_DRIVER := sdfat
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
